@@ -20,6 +20,7 @@
 		0B40856B21E7865800B1EC2F /* ListeEtudiants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B40856A21E7865800B1EC2F /* ListeEtudiants.swift */; };
 		0B40856D21E7866700B1EC2F /* ListeEnseignants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B40856C21E7866700B1EC2F /* ListeEnseignants.swift */; };
 		0B40856F21E7867A00B1EC2F /* ListeModules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B40856E21E7867A00B1EC2F /* ListeModules.swift */; };
+		0B40857521E794FD00B1EC2F /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B40857421E794FD00B1EC2F /* Module.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		0B40856A21E7865800B1EC2F /* ListeEtudiants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeEtudiants.swift; sourceTree = "<group>"; };
 		0B40856C21E7866700B1EC2F /* ListeEnseignants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeEnseignants.swift; sourceTree = "<group>"; };
 		0B40856E21E7867A00B1EC2F /* ListeModules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeModules.swift; sourceTree = "<group>"; };
+		0B40857421E794FD00B1EC2F /* Module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Module.swift; path = ../Module.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				0B40856A21E7865800B1EC2F /* ListeEtudiants.swift */,
 				0B40856C21E7866700B1EC2F /* ListeEnseignants.swift */,
 				0B40856E21E7867A00B1EC2F /* ListeModules.swift */,
+				0B40857421E794FD00B1EC2F /* Module.swift */,
 			);
 			path = if26project;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 			files = (
 				0B40856D21E7866700B1EC2F /* ListeEnseignants.swift in Sources */,
 				0B40852F21E7786F00B1EC2F /* ViewController.swift in Sources */,
+				0B40857521E794FD00B1EC2F /* Module.swift in Sources */,
 				0B40856B21E7865800B1EC2F /* ListeEtudiants.swift in Sources */,
 				0B40852D21E7786F00B1EC2F /* AppDelegate.swift in Sources */,
 				0B40856921E7864600B1EC2F /* Etudiant.swift in Sources */,
