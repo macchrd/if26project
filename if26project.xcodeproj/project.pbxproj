@@ -23,6 +23,7 @@
 		0B4824E821E88DC100B7D8BD /* EnseignantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4824E721E88DC100B7D8BD /* EnseignantTableViewCell.swift */; };
 		0B4824EA21E892CA00B7D8BD /* EnseignantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4824E921E892CA00B7D8BD /* EnseignantTableViewController.swift */; };
 		0B4824EE21E8A25700B7D8BD /* EnseignantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4824ED21E8A25700B7D8BD /* EnseignantViewController.swift */; };
+		0BAAD36421E8CE0100039536 /* prof.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0BAAD36321E8CE0100039536 /* prof.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		0B4824E721E88DC100B7D8BD /* EnseignantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnseignantTableViewCell.swift; sourceTree = "<group>"; };
 		0B4824E921E892CA00B7D8BD /* EnseignantTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnseignantTableViewController.swift; sourceTree = "<group>"; };
 		0B4824ED21E8A25700B7D8BD /* EnseignantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EnseignantViewController.swift; path = ../EnseignantViewController.swift; sourceTree = "<group>"; };
+		0BAAD36321E8CE0100039536 /* prof.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = prof.gif; path = ../../../Downloads/prof.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 				0B40856E21E7867A00B1EC2F /* ListeModules.swift */,
 				0B4824E721E88DC100B7D8BD /* EnseignantTableViewCell.swift */,
 				0B4824E921E892CA00B7D8BD /* EnseignantTableViewController.swift */,
+				0BAAD36321E8CE0100039536 /* prof.gif */,
 			);
 			path = if26project;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 				0B40853721E7787100B1EC2F /* LaunchScreen.storyboard in Resources */,
 				0B40853421E7787100B1EC2F /* Assets.xcassets in Resources */,
 				0B40853221E7786F00B1EC2F /* Main.storyboard in Resources */,
+				0BAAD36421E8CE0100039536 /* prof.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import os.log
 
 class EnseignantViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -14,6 +15,10 @@ class EnseignantViewController: UIViewController, UITextFieldDelegate, UIImagePi
     @IBOutlet weak var et_surname: UITextField!
     @IBOutlet weak var et_type: UITextField!
     @IBOutlet weak var image: UIImageView!
+    
+    @IBOutlet weak var saveButton: UINavigationItem!
+    var enseignant: Enseignant?
+    
     
     
     override func viewDidLoad() {
@@ -25,6 +30,18 @@ class EnseignantViewController: UIViewController, UITextFieldDelegate, UIImagePi
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    //MARK: Navigation
+    //This method lets you configure a view controller before it's presented.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        // Configure the destination view controller only when the save button is pressed.
+        guard let button = sender as? UIBarButtonItem, button === saveButton else {
+            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
+            return
+        }
     }
     
 
@@ -40,7 +57,8 @@ class EnseignantViewController: UIViewController, UITextFieldDelegate, UIImagePi
     
     //MARK: Actions comment in ViewController.swift
 
-    @IBAction func selectImageFromLibrary(_ sender: UITapGestureRecognizer) {
+    @IBAction func selectImage(_ sender: UIButton) {
+        print("oui")
         // Hide the keyboard.
         et_name.resignFirstResponder()
         et_surname.resignFirstResponder()
