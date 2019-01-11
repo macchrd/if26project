@@ -20,7 +20,9 @@
 		0B40856B21E7865800B1EC2F /* ListeEtudiants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B40856A21E7865800B1EC2F /* ListeEtudiants.swift */; };
 		0B40856D21E7866700B1EC2F /* ListeEnseignants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B40856C21E7866700B1EC2F /* ListeEnseignants.swift */; };
 		0B40856F21E7867A00B1EC2F /* ListeModules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B40856E21E7867A00B1EC2F /* ListeModules.swift */; };
-		0B40857521E794FD00B1EC2F /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B40857421E794FD00B1EC2F /* Module.swift */; };
+		0B4824E821E88DC100B7D8BD /* EnseignantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4824E721E88DC100B7D8BD /* EnseignantTableViewCell.swift */; };
+		0B4824EA21E892CA00B7D8BD /* EnseignantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4824E921E892CA00B7D8BD /* EnseignantTableViewController.swift */; };
+		0B4824EE21E8A25700B7D8BD /* EnseignantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4824ED21E8A25700B7D8BD /* EnseignantViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +62,9 @@
 		0B40856A21E7865800B1EC2F /* ListeEtudiants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeEtudiants.swift; sourceTree = "<group>"; };
 		0B40856C21E7866700B1EC2F /* ListeEnseignants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeEnseignants.swift; sourceTree = "<group>"; };
 		0B40856E21E7867A00B1EC2F /* ListeModules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeModules.swift; sourceTree = "<group>"; };
-		0B40857421E794FD00B1EC2F /* Module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Module.swift; path = ../Module.swift; sourceTree = "<group>"; };
+		0B4824E721E88DC100B7D8BD /* EnseignantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnseignantTableViewCell.swift; sourceTree = "<group>"; };
+		0B4824E921E892CA00B7D8BD /* EnseignantTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnseignantTableViewController.swift; sourceTree = "<group>"; };
+		0B4824ED21E8A25700B7D8BD /* EnseignantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EnseignantViewController.swift; path = ../EnseignantViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +115,7 @@
 		0B40852B21E7786F00B1EC2F /* if26project */ = {
 			isa = PBXGroup;
 			children = (
+				0B4824ED21E8A25700B7D8BD /* EnseignantViewController.swift */,
 				0B40852C21E7786F00B1EC2F /* AppDelegate.swift */,
 				0B40852E21E7786F00B1EC2F /* ViewController.swift */,
 				0B40853021E7786F00B1EC2F /* Main.storyboard */,
@@ -123,7 +128,8 @@
 				0B40856A21E7865800B1EC2F /* ListeEtudiants.swift */,
 				0B40856C21E7866700B1EC2F /* ListeEnseignants.swift */,
 				0B40856E21E7867A00B1EC2F /* ListeModules.swift */,
-				0B40857421E794FD00B1EC2F /* Module.swift */,
+				0B4824E721E88DC100B7D8BD /* EnseignantTableViewCell.swift */,
+				0B4824E921E892CA00B7D8BD /* EnseignantTableViewController.swift */,
 			);
 			path = if26project;
 			sourceTree = "<group>";
@@ -279,11 +285,13 @@
 			files = (
 				0B40856D21E7866700B1EC2F /* ListeEnseignants.swift in Sources */,
 				0B40852F21E7786F00B1EC2F /* ViewController.swift in Sources */,
-				0B40857521E794FD00B1EC2F /* Module.swift in Sources */,
+				0B4824EE21E8A25700B7D8BD /* EnseignantViewController.swift in Sources */,
 				0B40856B21E7865800B1EC2F /* ListeEtudiants.swift in Sources */,
+				0B4824E821E88DC100B7D8BD /* EnseignantTableViewCell.swift in Sources */,
 				0B40852D21E7786F00B1EC2F /* AppDelegate.swift in Sources */,
 				0B40856921E7864600B1EC2F /* Etudiant.swift in Sources */,
 				0B40855B21E7859400B1EC2F /* Module.swift in Sources */,
+				0B4824EA21E892CA00B7D8BD /* EnseignantTableViewController.swift in Sources */,
 				0B40856721E7863700B1EC2F /* Enseignant.swift in Sources */,
 				0B40856F21E7867A00B1EC2F /* ListeModules.swift in Sources */,
 			);
