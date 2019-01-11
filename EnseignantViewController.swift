@@ -16,15 +16,28 @@ class EnseignantViewController: UIViewController, UITextFieldDelegate, UIImagePi
     @IBOutlet weak var et_type: UITextField!
     @IBOutlet weak var image: UIImageView!
     
-    @IBOutlet weak var saveButton: UINavigationItem!
+    
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     var enseignant: Enseignant?
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        et_name.delegate = self
+        et_surname.delegate = self
+        et_type.delegate = self
+        
+        updateSaveButtonState()
+        
+        if let enseignant = self.enseignant {
+            navigationItem.title = enseignant.nom
+            et_name.text   = enseignant.nom
+            et_surname.text   = enseignant.prenom
+            et_type.text   = enseignant.type
+            //image = enseignant.photo
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,6 +46,16 @@ class EnseignantViewController: UIViewController, UITextFieldDelegate, UIImagePi
     }
     
     //MARK: Navigation
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+        let isPresentingInAddMealMode = presentingViewController is UINavigationController
+        if isPresentingInAddMealMode {
+            dismiss(animated: true, completion: nil)
+        }else if let owningNavigationController = navigationController{
+            owningNavigationController.popViewController(animated: true)
+        }else {
+            fatalError("The MealViewController is not inside a navigation controller.")
+        }
+    }
     //This method lets you configure a view controller before it's presented.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
@@ -42,27 +65,20 @@ class EnseignantViewController: UIViewController, UITextFieldDelegate, UIImagePi
             os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
             return
         }
+        
+        let name = et_name.text ?? ""
+        let surname = et_surname.text ?? ""
+        let type = et_type.text ?? ""
+        //let photo = image.image
+        
+        // Set the enseignant to be passed to EnseignantTableViewController after the unwind segue.
+        enseignant = Enseignant(nom: name, prenom: surname, type: type)
+        //enseignant?.photo = photo    Need to pass it in base64
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     //MARK: Actions comment in ViewController.swift
 
     @IBAction func selectImage(_ sender: UIButton) {
-        print("oui")
-        // Hide the keyboard.
-        et_name.resignFirstResponder()
-        et_surname.resignFirstResponder()
-        et_type.resignFirstResponder()
         
         // UIImagePickerController is a view controller that lets a user pick media from their photo library.
         let imagePickerController = UIImagePickerController()
@@ -93,6 +109,29 @@ class EnseignantViewController: UIViewController, UITextFieldDelegate, UIImagePi
         dismiss(animated: true, completion: nil)
     }
     
+    //MARK: UITextFieldDelegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        // Disable the Save button while editing.
+        saveButton.isEnabled = false
+    }
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        updateSaveButtonState()
+        navigationItem.title = textField.text
+    }
+    
+    //MARK: Private Methods
+    
+    private func updateSaveButtonState() {
+        // Disable the Save button if the text field is empty.
+        let name = et_name.text ?? ""
+        let surname = et_surname.text ?? ""
+        let type = et_type.text ?? ""
+        saveButton.isEnabled = !name.isEmpty && !surname.isEmpty && !type.isEmpty
+    }
 }

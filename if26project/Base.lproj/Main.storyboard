@@ -115,6 +115,7 @@
                                     <outlet property="nameLabel" destination="UdE-47-xMm" id="BHI-9l-AMg"/>
                                     <outlet property="surnameLabel" destination="Hqk-Qe-82C" id="oEh-GB-Zfm"/>
                                     <outlet property="typeLabel" destination="A0t-QU-wBJ" id="W7T-EK-DHT"/>
+                                    <segue destination="qiD-J0-or5" kind="show" identifier="ShowDetail" id="etP-mC-ByG"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -209,15 +210,23 @@
                         <viewLayoutGuide key="safeArea" id="c6x-5w-qkU"/>
                     </view>
                     <navigationItem key="navigationItem" title="Nouvel enseignant" id="kb5-Ta-7U1">
-                        <barButtonItem key="leftBarButtonItem" title="Annuler" id="Ys8-63-iQu"/>
-                        <barButtonItem key="rightBarButtonItem" title="Sauvegarder" id="3p7-Fy-TYW"/>
+                        <barButtonItem key="leftBarButtonItem" title="Annuler" id="Ys8-63-iQu">
+                            <connections>
+                                <action selector="cancel:" destination="qiD-J0-or5" id="UAd-ML-w6t"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Sauvegarder" id="3p7-Fy-TYW">
+                            <connections>
+                                <segue destination="okT-SA-3bk" kind="unwind" unwindAction="unwindToEnseignantsListWithSender:" id="Hih-u6-vZH"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="et_name" destination="Uff-cC-InE" id="rNd-Hv-Z8R"/>
                         <outlet property="et_surname" destination="XQR-sG-0rW" id="1ZC-bn-wE2"/>
                         <outlet property="et_type" destination="srN-Cc-z5w" id="L7W-Hy-Q5F"/>
                         <outlet property="image" destination="5MV-yd-fQD" id="DXS-n0-HE4"/>
-                        <outlet property="saveButton" destination="kb5-Ta-7U1" id="2yI-1R-wVc"/>
+                        <outlet property="saveButton" destination="3p7-Fy-TYW" id="ue8-Pj-ISI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xH5-cB-dSV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -264,10 +273,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ueu-Ud-NAJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3424.8000000000002" y="32.833583208395808"/>
+            <point key="canvasLocation" x="3441" y="469"/>
         </scene>
     </scenes>
     <resources>
         <image name="prof.gif" width="677" height="907"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="etP-mC-ByG"/>
+    </inferredMetricsTieBreakers>
 </document>
