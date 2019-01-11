@@ -14,7 +14,6 @@ class EnseignantViewController: UIViewController, UITextFieldDelegate, UIImagePi
     @IBOutlet weak var et_name: UITextField!
     @IBOutlet weak var et_surname: UITextField!
     @IBOutlet weak var et_type: UITextField!
-    @IBOutlet weak var base64str: UITextField!
     @IBOutlet weak var image: UIImageView!
     
     
@@ -36,7 +35,6 @@ class EnseignantViewController: UIViewController, UITextFieldDelegate, UIImagePi
             et_name.text   = enseignant.nom
             et_surname.text   = enseignant.prenom
             et_type.text   = enseignant.type
-            base64str.text = enseignant.photo
             if(enseignant.photo != "?"){
                 let dataDecoded : Data = Data(base64Encoded: enseignant.photo, options: .ignoreUnknownCharacters)!
                 let decodedimage = UIImage(data: dataDecoded)
