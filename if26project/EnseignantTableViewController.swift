@@ -127,7 +127,7 @@ class EnseignantTableViewController: UITableViewController {
     
     @IBAction func unwindToEnseignantsList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? EnseignantViewController, let enseignant = sourceViewController.enseignant {
-            
+            print(enseignant.descriptor)
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 // Update an existing meal.
                 enseignants[selectedIndexPath.row] = enseignant

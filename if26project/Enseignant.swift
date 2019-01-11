@@ -30,6 +30,6 @@ public class Enseignant  {
     }
     
     public var descriptor: String {
-        return "Enseignant(\(nom),\(prenom),\(type))"
+        return "Enseignant(\(nom),\(prenom),\(type),\(photo))"
     }
 }

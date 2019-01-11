@@ -14,6 +14,7 @@ class EnseignantViewController: UIViewController, UITextFieldDelegate, UIImagePi
     @IBOutlet weak var et_name: UITextField!
     @IBOutlet weak var et_surname: UITextField!
     @IBOutlet weak var et_type: UITextField!
+    @IBOutlet weak var base64str: UITextField!
     @IBOutlet weak var image: UIImageView!
     
     
@@ -35,7 +36,12 @@ class EnseignantViewController: UIViewController, UITextFieldDelegate, UIImagePi
             et_name.text   = enseignant.nom
             et_surname.text   = enseignant.prenom
             et_type.text   = enseignant.type
-            //image = enseignant.photo
+            base64str.text = enseignant.photo
+            if(enseignant.photo != "?"){
+                let dataDecoded : Data = Data(base64Encoded: enseignant.photo, options: .ignoreUnknownCharacters)!
+                let decodedimage = UIImage(data: dataDecoded)
+                image.image = decodedimage
+            }
         }
         
     }
@@ -56,6 +62,7 @@ class EnseignantViewController: UIViewController, UITextFieldDelegate, UIImagePi
             fatalError("The MealViewController is not inside a navigation controller.")
         }
     }
+    
     //This method lets you configure a view controller before it's presented.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
@@ -69,11 +76,14 @@ class EnseignantViewController: UIViewController, UITextFieldDelegate, UIImagePi
         let name = et_name.text ?? ""
         let surname = et_surname.text ?? ""
         let type = et_type.text ?? ""
-        //let photo = image.image
         
+        let photo : UIImage = image.image!
+        let imageData:NSData = UIImagePNGRepresentation(photo)! as NSData
+        let strBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
+
         // Set the enseignant to be passed to EnseignantTableViewController after the unwind segue.
         enseignant = Enseignant(nom: name, prenom: surname, type: type)
-        //enseignant?.photo = photo    Need to pass it in base64
+        enseignant?.photo = strBase64
     }
     
     //MARK: Actions comment in ViewController.swift
