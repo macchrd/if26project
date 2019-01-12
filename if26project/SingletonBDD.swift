@@ -12,13 +12,13 @@ import SQLite
 
 class SingletonBdd{
     
-   /* var database: Connection!
-    let modules_table = Table("modules")
-    let modules_id = Expression<Int>("id")
-    let modules_sigle = Expression<String>("sigle")
-    let modules_parcours = Expression<String>("parcours")
-    let modules_categorie = Expression<String>("categorie")
-    let modules_credit = Expression<Int>("credit")
+    var database: Connection!
+    let enseignant_table = Table("enseignant")
+    let enseignant_id = Expression<Int>("id")
+    let enseignant_nom = Expression<String>("nom")
+    let enseignant_prenom = Expression<String>("prenom")
+    let enseignant_type = Expression<String>("type")
+    let enseignant_photo = Expression<String>("photo")
     var initiated = false;
     
     var pk = 1000;    // valeur de départ pour la primary key
@@ -36,7 +36,7 @@ class SingletonBdd{
             do {let documentDirectory = try
                 FileManager.default.url(for: .documentDirectory,
                                         in: .userDomainMask, appropriateFor: nil, create: true)
-                let fileUrl = documentDirectory.appendingPathComponent("modules").appendingPathExtension("sqlite3")
+                let fileUrl = documentDirectory.appendingPathComponent("if26projectBDD").appendingPathExtension("sqlite3")
                 let base = try Connection(fileUrl.path)
                 self.database = base;
             }catch {
@@ -51,42 +51,49 @@ class SingletonBdd{
         return self.database;
     }
     
-    func createTable() {
+    func createTableEnseignant() {
         print ("--> createTableModules debut")
         if !self.tableExist {
             self.tableExist = true
             // Instruction pour faire un drop de la table USERS
-            let dropTable = self.modules_table.drop(ifExists: true)
+            let dropTable = self.enseignant_table.drop(ifExists: true)
             // Instruction pour faire un create de la table USERS
-            let createTable = self.modules_table.create { table in
-                table.column(self.modules_id, primaryKey: true)
-                table.column(self.modules_sigle)
-                table.column(self.modules_parcours)
-                table.column(self.modules_categorie)
-                table.column(self.modules_credit)
+            let createTable = self.enseignant_table.create { table in
+                table.column(self.enseignant_id, primaryKey: true)
+                table.column(self.enseignant_nom)
+                table.column(self.enseignant_prenom)
+                table.column(self.enseignant_type)
+                table.column(self.enseignant_photo)
             }
             do {// Exécution du drop et du create
                 try self.database.run(dropTable)
                 try self.database.run(createTable)
-                print ("Table modules est créée")
+                print ("Table enseignant est créée")
             }catch {
                 print (error)
             }
         }
-        print ("--> createTableModules fin")
+        print ("--> createTableEnseignants fin")
         
-        insertModule(sigle:"String", parcours:"String", categorie:"String",credit:2)
         
+        let test = "test"
+        insertEnseignant(nom: test, prenom: test, type: test, photo: "?")
     }
     
     func getPK() -> Int {
-        self.pk += 1
+        var count: Int = 1
+        do {try         count = self.database.scalar(enseignant_table.count)+1 }
+        catch{
+            
+        }
+        
+        self.pk += count
         return self.pk
     }
     
-    func deleteModule(rowid:String)  {
+    func deleteEnseignant(rowid:Int)  {
         
-        let alice = modules_table.filter(modules_sigle == rowid )
+        let alice = enseignant_table.filter(enseignant_id == rowid )
         
         //try database.run(alice.update(email <- email.replace("mac.com", with: "me.com")))
         // UPDATE "users" SET "email" = replace("email", 'mac.com', 'me.com')
@@ -99,7 +106,7 @@ class SingletonBdd{
         }
         catch {
             print (error)
-            print ("--> insertTableUsers fin")
+            print ("--> delete enseignant failed")
         }
         // DELETE FROM "users" WHERE ("id" = 1)
         
@@ -107,41 +114,97 @@ class SingletonBdd{
     }
     
     
-    func insertModule(sigle:String, parcours:String, categorie:String,credit:Int) {
+    func insertEnseignant(nom:String, prenom:String, type:String, photo: String) {
         print ("--> insertTableModules debut")
-        // Insertion de 2 tuples exemples (sera réalisé à chaque click sur le bouton)
-        let insert = self.modules_table.insert(self.modules_id <- getPK(), self.modules_sigle <- sigle, self.modules_parcours <- parcours, self.modules_categorie <- categorie, self.modules_credit <- credit)
+        let insert = self.enseignant_table.insert(self.enseignant_id <- getPK(), self.enseignant_nom <- nom, self.enseignant_prenom <- prenom, self.enseignant_type <- type, self.enseignant_photo <- photo)
+        print(insert)
         do {try self.database.run(insert)
             print ("Insert ok")
             
         }catch {
             print (error)
-            print ("--> insertTableUsers fin")
+            print ("--> insertEnseignant failed")
         }
+    }
+    
+    func updateEnseignant(id:Int, nom:String, prenom:String, type:String, photo: String){
+        print ("--> updateTableModules debut")
+        let enseignant = self.enseignant_table.filter(enseignant_id == id)
+        let update = enseignant.update(self.enseignant_nom <- nom, self.enseignant_prenom <- prenom, self.enseignant_type <- type, self.enseignant_photo <- photo)
+        do {try self.database.run(update)
+            print ("Update ok")
+            
+        }catch {
+            print (error)
+            print ("--> updateEnseignant failed")
+        }
+    }
+    
+    func getIdEnseignant(nom: String) -> Int{
+        print ("--> getRowIdEnseignant debut")
+        var id: Int = -1
+        print(nom)
+        let filteredTable = self.enseignant_table.filter(enseignant_nom == nom)
+        
+        do {
+            let res = try self.database.prepare(filteredTable)
+            for enseignant in res{
+                id = enseignant[enseignant_id]
+                print("id", enseignant[enseignant_id])
+            }
+            print ("getIdEnseignant ok")
+            
+        }catch {
+            print (error)
+            print ("--> getIdEnseignant failed")
+        }
+        return id
+    }
+    
+    func getEnseignantById(id: Int) -> Enseignant{
+        print ("--> getEnseignantById debut")
+        
+        let filteredTable = self.enseignant_table.filter(enseignant_id == id)
+        var ans: Enseignant = Enseignant.init()
+        do {
+            let res = try self.database.prepare(filteredTable)
+            for enseignant in res{
+                ans = Enseignant.init(nom: enseignant[self.enseignant_nom], prenom: enseignant[self.enseignant_prenom], type: enseignant[self.enseignant_type])
+                ans.id = id
+                ans.photo = enseignant[self.enseignant_photo]
+                print("id", enseignant[enseignant_id])
+            }
+            print ("getIdEnseignant ok")
+            
+        }catch {
+            print (error)
+            print ("--> getIdEnseignant failed")
+        }
+        return ans
     }
     
     func countModule() {
     }
     
-    func selectAll() ->  [Module] {
+    func selectAllEnseignants() ->  [Enseignant] {
         print("---> SelectAll debut")
         
-        var cursus: [Module] = []
-        var module: Module;
+        var listeEnseignants: [Enseignant] = []
+        //var enseignant: Enseignant;
         
         do{
-            let modules = try self.database.prepare(self.modules_table)
-            for module in modules{
-                print("id: ", module[self.modules_id], ", sigle: ", module[self.modules_sigle], ", parcours: ", module[self.modules_parcours], ", categorie: ", module[self.modules_categorie], ", credit: ", module[self.modules_credit])
+            let enseignants = try self.database.prepare(self.enseignant_table)
+            for enseignant in enseignants{
+                print("id: ", enseignant[self.enseignant_id], ", nom: ", enseignant[self.enseignant_nom], ", prenom: ", enseignant[self.enseignant_prenom], ", type: ", enseignant[self.enseignant_type])
                 
-                cursus.append((Module.init(sigle: module[self.modules_sigle], categorie: module[self.modules_categorie], credit: module[self.modules_credit], resultat: Resultat.C)))
+                listeEnseignants.append((Enseignant.init(nom: enseignant[self.enseignant_nom], prenom: enseignant[self.enseignant_prenom], type: enseignant[self.enseignant_type])))
             }
             
         }catch{
             print(error)
         }
         print("---> SelectAll fin")
-        print( "Cursus size", cursus.count)
-        return cursus
-    }*/
+        print( "Cursus size", listeEnseignants.count)
+        return listeEnseignants
+    }
 }

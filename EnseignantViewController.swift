@@ -15,12 +15,13 @@ class EnseignantViewController: UIViewController, UITextFieldDelegate, UIImagePi
     @IBOutlet weak var et_surname: UITextField!
     @IBOutlet weak var et_type: UITextField!
     @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var id: UITextField!
     
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
     var enseignant: Enseignant?
-    
-    
+    let db = SingletonBdd.shared
+    var oldName: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,10 +33,14 @@ class EnseignantViewController: UIViewController, UITextFieldDelegate, UIImagePi
         
         if let enseignant = self.enseignant {
             navigationItem.title = enseignant.nom
+            oldName = enseignant.nom
             et_name.text   = enseignant.nom
             et_surname.text   = enseignant.prenom
             et_type.text   = enseignant.type
-            if(enseignant.photo != "?"){
+            
+            let e = db.getEnseignantById(id: db.getIdEnseignant(nom: oldName))
+            print(e.descriptor)
+            if(e.photo != "?"){
                 let dataDecoded : Data = Data(base64Encoded: enseignant.photo, options: .ignoreUnknownCharacters)!
                 let decodedimage = UIImage(data: dataDecoded)
                 image.image = decodedimage
@@ -80,7 +85,9 @@ class EnseignantViewController: UIViewController, UITextFieldDelegate, UIImagePi
         let strBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
 
         // Set the enseignant to be passed to EnseignantTableViewController after the unwind segue.
+        
         enseignant = Enseignant(nom: name, prenom: surname, type: type)
+        enseignant?.id = db.getIdEnseignant(nom: oldName)
         enseignant?.photo = strBase64
     }
     

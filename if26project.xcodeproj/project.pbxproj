@@ -24,10 +24,10 @@
 		0B4824EA21E892CA00B7D8BD /* EnseignantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4824E921E892CA00B7D8BD /* EnseignantTableViewController.swift */; };
 		0B4824EE21E8A25700B7D8BD /* EnseignantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4824ED21E8A25700B7D8BD /* EnseignantViewController.swift */; };
 		0BAAD36421E8CE0100039536 /* prof.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0BAAD36321E8CE0100039536 /* prof.gif */; };
-		0BAAD37F21E9161C00039536 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BAAD37021E9155200039536 /* SQLite.framework */; };
 		0BAAD38521E91B0B00039536 /* SingletonBDD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAAD38421E91B0B00039536 /* SingletonBDD.swift */; };
-		0BAAD38621E91B4B00039536 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BAAD37021E9155200039536 /* SQLite.framework */; };
-		0BAAD38721E91B4B00039536 /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0BAAD37021E9155200039536 /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2C1306B621E9DFF800EA823B /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BAAD37021E9155200039536 /* SQLite.framework */; };
+		2C1306B721E9E00000EA823B /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BAAD37021E9155200039536 /* SQLite.framework */; };
+		2C1306B821E9E00000EA823B /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0BAAD37021E9155200039536 /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,7 +94,7 @@
 			remoteGlobalIDString = A121AC451CA35C79005A31D1;
 			remoteInfo = "SQLite watchOS";
 		};
-		0BAAD38821E91B4B00039536 /* PBXContainerItemProxy */ = {
+		2C1306B921E9E00000EA823B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0BAAD36521E9155100039536 /* SQLite.xcodeproj */;
 			proxyType = 1;
@@ -104,13 +104,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		0BAAD38A21E91B4C00039536 /* Embed Frameworks */ = {
+		2C1306BB21E9E00000EA823B /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				0BAAD38721E91B4B00039536 /* SQLite.framework in Embed Frameworks */,
+				2C1306B821E9E00000EA823B /* SQLite.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -150,8 +150,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0BAAD38621E91B4B00039536 /* SQLite.framework in Frameworks */,
-				0BAAD37F21E9161C00039536 /* SQLite.framework in Frameworks */,
+				2C1306B721E9E00000EA823B /* SQLite.framework in Frameworks */,
+				2C1306B621E9DFF800EA823B /* SQLite.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,12 +267,12 @@
 				0B40852521E7786F00B1EC2F /* Sources */,
 				0B40852621E7786F00B1EC2F /* Frameworks */,
 				0B40852721E7786F00B1EC2F /* Resources */,
-				0BAAD38A21E91B4C00039536 /* Embed Frameworks */,
+				2C1306BB21E9E00000EA823B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				0BAAD38921E91B4B00039536 /* PBXTargetDependency */,
+				2C1306BA21E9E00000EA823B /* PBXTargetDependency */,
 			);
 			name = if26project;
 			productName = if26project;
@@ -493,10 +493,10 @@
 			target = 0B40852821E7786F00B1EC2F /* if26project */;
 			targetProxy = 0B40854921E7787100B1EC2F /* PBXContainerItemProxy */;
 		};
-		0BAAD38921E91B4B00039536 /* PBXTargetDependency */ = {
+		2C1306BA21E9E00000EA823B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "SQLite iOS";
-			targetProxy = 0BAAD38821E91B4B00039536 /* PBXContainerItemProxy */;
+			targetProxy = 2C1306B921E9E00000EA823B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

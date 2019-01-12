@@ -10,10 +10,10 @@ import UIKit
 import os.log
 
 class EnseignantTableViewController: UITableViewController {
-    
     //MARK: Properties
     
     var enseignants = [Enseignant]()
+    let db = SingletonBdd.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,8 +68,9 @@ class EnseignantTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            enseignants.remove(at: indexPath.row)
+            let enseignant = enseignants.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            db.deleteEnseignant(rowid: db.getIdEnseignant(nom: enseignant.nom))
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
@@ -108,7 +109,7 @@ class EnseignantTableViewController: UITableViewController {
             }
             
             guard let selectedEnseignantCell = sender as? EnseignantTableViewCell else {
-                fatalError("Unexpected sender: \(sender)")
+                fatalError("Unexpected sender: \(String(describing: sender))")
             }
             
             guard let indexPath = tableView.indexPath(for: selectedEnseignantCell) else {
@@ -119,7 +120,7 @@ class EnseignantTableViewController: UITableViewController {
             enseignantDetailViewController.enseignant = selectedEnseignant
             
         default:
-            fatalError("Unexpected Segue Identifier; \(segue.identifier)")
+            fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
         }
     }
     
@@ -127,17 +128,20 @@ class EnseignantTableViewController: UITableViewController {
     
     @IBAction func unwindToEnseignantsList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? EnseignantViewController, let enseignant = sourceViewController.enseignant {
-            print(enseignant.descriptor)
+            //print(enseignant.descriptor)
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
-                // Update an existing meal.
+                // Update an existing enseignant.
                 enseignants[selectedIndexPath.row] = enseignant
                 tableView.reloadRows(at: [selectedIndexPath], with: .none)
+                
+                db.updateEnseignant(id: enseignant.id, nom: enseignant.nom, prenom: enseignant.prenom, type: enseignant.type, photo: enseignant.photo)
             }else {
                 // Add a new meal.
                 let newIndexPath = IndexPath(row: enseignants.count, section: 0)
                 
                 enseignants.append(enseignant)
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
+                db.insertEnseignant(nom: enseignant.nom, prenom: enseignant.prenom, type: enseignant.type, photo: enseignant.photo)
             }
         }
     }
@@ -145,8 +149,9 @@ class EnseignantTableViewController: UITableViewController {
     //MARK: Private Methods
     
     private func loadSampleMeals() {
-        let le = ListeEnseignants()
-        enseignants = le.enseignants
+        // le = ListeEnseignants()
+        //db.createTableEnseignant()
+        enseignants = db.selectAllEnseignants()
     }
 
 }

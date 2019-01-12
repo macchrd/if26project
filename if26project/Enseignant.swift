@@ -10,12 +10,14 @@ import Foundation
 
 public class Enseignant  {
     
+    var id: Int
     var nom: String
     var prenom: String
     var type: String
     var photo: String
     
     init() {
+        id = 1
         nom = "?"
         prenom = "?"
         type = "?"
@@ -23,6 +25,7 @@ public class Enseignant  {
     }
     
     init(nom: String, prenom: String, type: String) {
+        id = 1
         self.nom = nom
         self.prenom = prenom
         self.type = type
