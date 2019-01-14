@@ -180,6 +180,8 @@ class EnseignantTableViewController: UITableViewController, UISearchBarDelegate,
     private func loadData() {
         // le = ListeEnseignants()
         //db.createTableEnseignant()
+        //db.createTableEtudiant()
+        //db.createTableEnseignant()
         enseignants = db.selectAllEnseignants()
     }
 

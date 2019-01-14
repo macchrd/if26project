@@ -156,7 +156,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="3541.5999999999999" y="33.733133433283363"/>
+            <point key="canvasLocation" x="3734" y="-684"/>
         </scene>
         <!--Nouvel enseignant-->
         <scene sceneID="JoI-Sy-KET">
@@ -256,7 +256,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="5303.1999999999998" y="32.833583208395808"/>
+            <point key="canvasLocation" x="5495" y="-685"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qZ8-35-b0X">
@@ -274,7 +274,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W2c-8y-qI2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2516" y="435.83208395802103"/>
+            <point key="canvasLocation" x="2724" y="-283"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2c3-6B-ZTZ">
@@ -292,7 +292,84 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ueu-Ud-NAJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4380" y="468.21589205397305"/>
+            <point key="canvasLocation" x="4572" y="-250"/>
+        </scene>
+        <!--Enseignants-->
+        <scene sceneID="o8E-Ak-rGa">
+            <objects>
+                <tableViewController id="pG3-5J-uo0" customClass="EnseignantTableViewController" customModule="if26project" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="36" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="aDk-e4-Xwv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="WKp-NV-gYS">
+                            <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Ajouter"/>
+                        </button>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EnseignantTableViewCell" rowHeight="36" id="Slq-wZ-osS" customClass="EnseignantTableViewCell" customModule="if26project" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="36"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Slq-wZ-osS" id="T8Z-KI-b5l">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="35.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="150" translatesAutoresizingMaskIntoConstraints="NO" id="MZ1-IA-mkf">
+                                            <rect key="frame" x="16" y="11" width="100" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="150" translatesAutoresizingMaskIntoConstraints="NO" id="Qdb-b7-qHd">
+                                            <rect key="frame" x="273" y="12" width="102" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Prenom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="150" translatesAutoresizingMaskIntoConstraints="NO" id="cXy-Fr-E4U">
+                                            <rect key="frame" x="137" y="12" width="100" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="MZ1-IA-mkf" id="eAQ-4K-HhH"/>
+                                    <outlet property="surnameLabel" destination="cXy-Fr-E4U" id="C49-TI-OBy"/>
+                                    <outlet property="typeLabel" destination="Qdb-b7-qHd" id="F5R-cZ-XZ1"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="pG3-5J-uo0" id="wCo-DW-tSN"/>
+                            <outlet property="delegate" destination="pG3-5J-uo0" id="Qeh-Jn-AUi"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Enseignants" id="Whv-9V-RdE">
+                        <barButtonItem key="leftBarButtonItem" title="Retour" id="EFE-h6-ylB"/>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="DLf-Iy-O63" id="Xi7-M5-ZcX"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0F1-u4-fhi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="otR-Yb-2ZK">
+                    <connections>
+                        <outlet property="delegate" destination="pG3-5J-uo0" id="Mtr-iH-lum"/>
+                        <outlet property="searchContentsController" destination="pG3-5J-uo0" id="qfr-Mt-FpA"/>
+                        <outlet property="searchResultsDataSource" destination="pG3-5J-uo0" id="NVp-tf-ysY"/>
+                        <outlet property="searchResultsDelegate" destination="pG3-5J-uo0" id="1ii-ZT-lc3"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="3734" y="-684"/>
         </scene>
     </scenes>
     <resources>

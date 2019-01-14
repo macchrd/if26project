@@ -10,12 +10,14 @@ import Foundation
 
 
 public class Module  {
+    var id: Int
     var sigle: String
     var categorie: String
     var credit: Int
     var parcours: String
     
     init() {
+        id = 1
         sigle = "?"
         categorie = "?"
         credit = 0
@@ -23,6 +25,7 @@ public class Module  {
     }
     
     init(sigle: String, parcours: String, categorie: String, credit: Int) {
+        id = 1
         self.sigle = sigle
         self.categorie = categorie
         self.credit = credit

@@ -10,6 +10,7 @@ import Foundation
 
 public class Etudiant  {
     
+    var id: Int
     var nom: String
     var prenom: String
     var niveau: String
@@ -17,6 +18,7 @@ public class Etudiant  {
     var photo: String
     
     init() {
+        id = 1
         nom = "?"
         prenom = "?"
         niveau = "?"
@@ -25,6 +27,7 @@ public class Etudiant  {
     }
     
     init(nom: String, prenom: String, niveau: String, filiere: String) {
+        id = 1
         self.nom = nom
         self.prenom = prenom
         self.niveau = niveau
