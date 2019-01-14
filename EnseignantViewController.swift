@@ -9,25 +9,29 @@
 import UIKit
 import os.log
 
-class EnseignantViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class EnseignantViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource   {
 
     @IBOutlet weak var et_name: UITextField!
     @IBOutlet weak var et_surname: UITextField!
-    @IBOutlet weak var et_type: UITextField!
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var id: UITextField!
     
+    @IBOutlet weak var pickerView: UIPickerView!
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
     var enseignant: Enseignant?
     let db = SingletonBdd.shared
     var oldName: String = ""
+    let types = ["Professeur","Maitre de conférence","Contractuel"]
+    var photoHasChanged: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         et_name.delegate = self
         et_surname.delegate = self
-        et_type.delegate = self
+        
+        pickerView.delegate = self
+        pickerView.dataSource = self
         
         updateSaveButtonState()
         
@@ -36,7 +40,19 @@ class EnseignantViewController: UIViewController, UITextFieldDelegate, UIImagePi
             oldName = enseignant.nom
             et_name.text   = enseignant.nom
             et_surname.text   = enseignant.prenom
-            et_type.text   = enseignant.type
+            
+            switch(enseignant.type) {
+                
+            case "Professeur":
+                pickerView.selectRow(0, inComponent: 0, animated: true)
+            case "Maitre de conférence":
+                pickerView.selectRow(1, inComponent: 0, animated: true)
+            case "Contractuel":
+                pickerView.selectRow(2, inComponent: 0, animated: true)
+            default:
+                print("")
+            }
+            
             
             let e = db.getEnseignantById(id: db.getIdEnseignant(nom: oldName))
             //print(e.descriptor)
@@ -53,6 +69,7 @@ class EnseignantViewController: UIViewController, UITextFieldDelegate, UIImagePi
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
     //MARK: Navigation
     @IBAction func cancel(_ sender: UIBarButtonItem) {
@@ -78,7 +95,7 @@ class EnseignantViewController: UIViewController, UITextFieldDelegate, UIImagePi
         
         let name = et_name.text ?? ""
         let surname = et_surname.text ?? ""
-        let type = et_type.text ?? ""
+        let selectedType = types[pickerView.selectedRow(inComponent: 0)]
         
         let photo : UIImage = image.image!
         let imageData:NSData = UIImagePNGRepresentation(photo)! as NSData
@@ -86,7 +103,7 @@ class EnseignantViewController: UIViewController, UITextFieldDelegate, UIImagePi
 
         // Set the enseignant to be passed to EnseignantTableViewController after the unwind segue.
         
-        enseignant = Enseignant(nom: name, prenom: surname, type: type)
+        enseignant = Enseignant(nom: name, prenom: surname, type: selectedType)
         enseignant?.id = db.getIdEnseignant(nom: oldName)
         enseignant?.photo = strBase64
     }
@@ -119,11 +136,32 @@ class EnseignantViewController: UIViewController, UITextFieldDelegate, UIImagePi
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
         image.image = selectedImage
+        photoHasChanged = true
+        updateSaveButtonState()
         
         // Dismiss the picker.
         dismiss(animated: true, completion: nil)
     }
     
+    //MARK: UIPickerDelegate
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return types.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return types[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        photoHasChanged = true
+        updateSaveButtonState()
+    }
+    
+
     //MARK: UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -146,7 +184,6 @@ class EnseignantViewController: UIViewController, UITextFieldDelegate, UIImagePi
         // Disable the Save button if the text field is empty.
         let name = et_name.text ?? ""
         let surname = et_surname.text ?? ""
-        let type = et_type.text ?? ""
-        saveButton.isEnabled = !name.isEmpty && !surname.isEmpty && !type.isEmpty
+        saveButton.isEnabled = (!name.isEmpty && !surname.isEmpty) || photoHasChanged
     }
 }

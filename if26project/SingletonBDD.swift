@@ -117,7 +117,7 @@ class SingletonBdd{
     func insertEnseignant(nom:String, prenom:String, type:String, photo: String) {
         print ("--> insertTableModules debut")
         let insert = self.enseignant_table.insert(self.enseignant_id <- getPK(), self.enseignant_nom <- nom, self.enseignant_prenom <- prenom, self.enseignant_type <- type, self.enseignant_photo <- photo)
-        print(insert)
+        //print(insert)
         do {try self.database.run(insert)
             print ("Insert ok")
             

@@ -9,20 +9,35 @@
 import UIKit
 import os.log
 
-class EnseignantTableViewController: UITableViewController {
+class EnseignantTableViewController: UITableViewController, UISearchBarDelegate, UISearchResultsUpdating {
+    
     //MARK: Properties
     
     var enseignants = [Enseignant]()
+    var filteredEnseignants = [Enseignant]()
     let db = SingletonBdd.shared
+    
+    let searchController = UISearchController(searchResultsController: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Use the edit button item provided by the table view controller.
-        navigationItem.leftBarButtonItem = editButtonItem
+        navigationItem.rightBarButtonItem = editButtonItem
         
         // Load the sample data.
-        loadSampleMeals()
+        loadData()
+        
+        filteredEnseignants = enseignants
+        
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
+        
+        //Initialize search bar
+        //searchController.searchBar.scopeButtonTitles = ["All", "Small", "Medium", "Large"]
+        //searchController.searchBar.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -120,7 +135,7 @@ class EnseignantTableViewController: UITableViewController {
             enseignantDetailViewController.enseignant = selectedEnseignant
             
         default:
-            fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
+            print("")
         }
     }
     
@@ -137,6 +152,7 @@ class EnseignantTableViewController: UITableViewController {
                 db.updateEnseignant(id: enseignant.id, nom: enseignant.nom, prenom: enseignant.prenom, type: enseignant.type, photo: enseignant.photo)
             }else {
                 // Add a new meal.
+                print(enseignants.count)
                 let newIndexPath = IndexPath(row: enseignants.count, section: 0)
                 
                 enseignants.append(enseignant)
@@ -146,9 +162,22 @@ class EnseignantTableViewController: UITableViewController {
         }
     }
     
+    func updateSearchResults(for searchController: UISearchController) {
+        // If we haven't typed anything into the search bar then do not filter the results
+        if searchController.searchBar.text! == "" {
+            filteredEnseignants = enseignants
+        } else {
+            // Filter the results
+            filteredEnseignants = enseignants.filter { $0.nom.lowercased().contains(searchController.searchBar.text!.lowercased()) }
+        }
+        
+        self.tableView.reloadData()
+    }
+
+    
     //MARK: Private Methods
     
-    private func loadSampleMeals() {
+    private func loadData() {
         // le = ListeEnseignants()
         //db.createTableEnseignant()
         enseignants = db.selectAllEnseignants()

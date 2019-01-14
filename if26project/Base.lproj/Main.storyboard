@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -67,10 +67,11 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Xiz-JI-a7Y"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="669.60000000000002" y="30.134932533733135"/>
+            <point key="canvasLocation" x="1608.8" y="30.134932533733135"/>
         </scene>
         <!--Enseignants-->
         <scene sceneID="ina-M2-1Ng">
@@ -80,6 +81,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="u7T-6j-wfj">
+                            <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Ajouter"/>
+                            <connections>
+                                <segue destination="81c-hi-Dc7" kind="presentation" id="MJA-hV-Paf"/>
+                            </connections>
+                        </button>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EnseignantTableViewCell" rowHeight="36" id="ZFF-SS-7WC" customClass="EnseignantTableViewCell" customModule="if26project" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="36"/>
@@ -124,17 +133,30 @@
                             <outlet property="delegate" destination="HUG-cC-dme" id="hRs-py-0xg"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Enseignants" id="QTe-G9-1Zb">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="9QO-Uf-2ds">
+                        <barButtonItem key="leftBarButtonItem" title="Retour" id="FtJ-es-Z5B">
                             <connections>
-                                <segue destination="81c-hi-Dc7" kind="presentation" identifier="AddItem" id="2Uu-3X-Tk7"/>
+                                <segue destination="BYZ-38-t0r" kind="showDetail" id="QLe-hN-YYT"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="DLf-Iy-O63" id="Pze-Wj-xdR"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EgB-Hz-uu7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="DLf-Iy-O63">
+                    <connections>
+                        <outlet property="delegate" destination="HUG-cC-dme" id="f7x-Ur-lEv"/>
+                        <outlet property="searchContentsController" destination="HUG-cC-dme" id="C1y-oh-Xns"/>
+                        <outlet property="searchResultsDataSource" destination="HUG-cC-dme" id="azc-AJ-Loh"/>
+                        <outlet property="searchResultsDelegate" destination="HUG-cC-dme" id="Hik-rd-p2N"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2602.4000000000001" y="33.733133433283363"/>
+            <point key="canvasLocation" x="3541.5999999999999" y="33.733133433283363"/>
         </scene>
         <!--Nouvel enseignant-->
         <scene sceneID="JoI-Sy-KET">
@@ -159,15 +181,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XQR-sG-0rW">
-                                <rect key="frame" x="161" y="339" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="srN-Cc-z5w">
-                                <rect key="frame" x="161" y="392" width="97" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="XQR-sG-0rW">
+                                <rect key="frame" x="161" y="339" width="170" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -180,8 +195,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="et_nom" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uff-cC-InE">
-                                <rect key="frame" x="161" y="280" width="97" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="et_nom" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="Uff-cC-InE">
+                                <rect key="frame" x="161" y="280" width="170" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -205,6 +220,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A9B-xg-Uyb">
+                                <rect key="frame" x="161" y="387" width="170" height="48"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="c6x-5w-qkU"/>
@@ -224,8 +243,8 @@
                     <connections>
                         <outlet property="et_name" destination="Uff-cC-InE" id="rNd-Hv-Z8R"/>
                         <outlet property="et_surname" destination="XQR-sG-0rW" id="1ZC-bn-wE2"/>
-                        <outlet property="et_type" destination="srN-Cc-z5w" id="L7W-Hy-Q5F"/>
                         <outlet property="image" destination="5MV-yd-fQD" id="DXS-n0-HE4"/>
+                        <outlet property="pickerView" destination="A9B-xg-Uyb" id="g3g-0f-nQM"/>
                         <outlet property="saveButton" destination="3p7-Fy-TYW" id="ue8-Pj-ISI"/>
                     </connections>
                 </viewController>
@@ -237,7 +256,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="4364" y="32.833583208395808"/>
+            <point key="canvasLocation" x="5303.1999999999998" y="32.833583208395808"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qZ8-35-b0X">
@@ -255,7 +274,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W2c-8y-qI2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1663.2" y="33.733133433283363"/>
+            <point key="canvasLocation" x="2516" y="435.83208395802103"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2c3-6B-ZTZ">
@@ -273,7 +292,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ueu-Ud-NAJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3441" y="469"/>
+            <point key="canvasLocation" x="4380" y="468.21589205397305"/>
         </scene>
     </scenes>
     <resources>
