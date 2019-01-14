@@ -39,9 +39,9 @@ class EnseignantViewController: UIViewController, UITextFieldDelegate, UIImagePi
             et_type.text   = enseignant.type
             
             let e = db.getEnseignantById(id: db.getIdEnseignant(nom: oldName))
-            print(e.descriptor)
+            //print(e.descriptor)
             if(e.photo != "?"){
-                let dataDecoded : Data = Data(base64Encoded: enseignant.photo, options: .ignoreUnknownCharacters)!
+                let dataDecoded : Data = Data(base64Encoded: e.photo, options: .ignoreUnknownCharacters)!
                 let decodedimage = UIImage(data: dataDecoded)
                 image.image = decodedimage
             }
