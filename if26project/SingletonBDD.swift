@@ -301,10 +301,10 @@ class SingletonBdd{
         }
     }
     
-    func updateEtudiant(id:Int, nom:String, prenom:String, niveau:String, filiere: String){
+    func updateEtudiant(id:Int, nom:String, prenom:String, niveau:String, filiere: String, photo: String){
         print ("--> updateTableEtudiant debut")
         let etudiant = self.etudiant_table.filter(attribut_id == id)
-        let update = etudiant.update(self.attribut_nom <- nom, self.attribut_prenom <- prenom, self.attribut_niveau <- niveau, self.attribut_filiere <- filiere)
+        let update = etudiant.update(self.attribut_nom <- nom, self.attribut_prenom <- prenom, self.attribut_niveau <- niveau, self.attribut_filiere <- filiere, self.attribut_photo <- photo)
         do {try self.database.run(update)
             print ("Update ok")
             
