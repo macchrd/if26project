@@ -96,9 +96,9 @@ class SingletonBdd{
         if !self.tableModuleExist {
             self.tableModuleExist = true
             // Instruction pour faire un drop de la table USERS
-            let dropTable = self.etudiant_table.drop(ifExists: true)
+            let dropTable = self.module_table.drop(ifExists: true)
             // Instruction pour faire un create de la table USERS
-            let createTable = self.etudiant_table.create { table in
+            let createTable = self.module_table.create { table in
                 table.column(self.attribut_id, primaryKey: true)
                 table.column(self.attribut_sigle)
                 table.column(self.attribut_parcours)
@@ -236,6 +236,7 @@ class SingletonBdd{
         
         do {
             try database.run(alice.delete())
+            print ("--> delete module ok")
             
         }
         catch {
@@ -372,7 +373,7 @@ class SingletonBdd{
         print ("--> getRowIdSigle debut")
         var id: Int = -1
         print(sigle)
-        let filteredTable = self.enseignant_table.filter(attribut_sigle == sigle)
+        let filteredTable = self.module_table.filter(attribut_sigle == sigle)
         
         do {
             let res = try self.database.prepare(filteredTable)
@@ -386,6 +387,7 @@ class SingletonBdd{
             print (error)
             print ("--> getIdSigle failed")
         }
+        print(id)
         return id
     }
     
