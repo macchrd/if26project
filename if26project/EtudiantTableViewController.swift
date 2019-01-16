@@ -57,7 +57,7 @@ class EtudiantTableViewController: UITableViewController, UISearchBarDelegate, U
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "ETudiantTableViewCell"
+        let cellIdentifier = "EtudiantTableViewCell"
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? EtudiantTableViewCell else{
             fatalError("The dequeued cell is not an instance of EnseignantTableViewCell.")
         }
@@ -86,7 +86,7 @@ class EtudiantTableViewController: UITableViewController, UISearchBarDelegate, U
             // Delete the row from the data source
             let etudiant = etudiants.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            db.deleteEtudiant(rowid: db.getIdEnseignant(nom: etudiant.nom))
+            db.deleteEtudiant(rowid: db.getIdEtudiant(nom: etudiant.nom))
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
@@ -142,7 +142,7 @@ class EtudiantTableViewController: UITableViewController, UISearchBarDelegate, U
     
     //MARK: Actions
     
-    @IBAction func unwindToEnseignantsList(sender: UIStoryboardSegue) {
+    @IBAction func unwindToEtudiantsList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? EtudiantViewController, let etudiant = sourceViewController.etudiant {
             //print(enseignant.descriptor)
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
@@ -182,7 +182,6 @@ class EtudiantTableViewController: UITableViewController, UISearchBarDelegate, U
         // le = ListeEnseignants()
         //db.createTableEnseignant()
         //db.createTableEtudiant()
-        //db.createTableEnseignant()
         etudiants = db.selectAllEtudiants()
         
     }

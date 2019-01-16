@@ -17,11 +17,11 @@ public class ListeEtudiants {
     
     init() {
         etudiants = []
-        ajoute(m:Etudiant.init(nom: "Deblin", prenom: "Samy", niveau: "ISI1", filiere: "?"))
+        ajoute(m:Etudiant.init(nom: "Deblin", prenom: "Samy", niveau: "ISI1", filiere: "TCBR"))
         ajoute(m:Etudiant.init(nom: "Tost", prenom: "Mael", niveau: "ISI4", filiere: "MPL"))
         ajoute(m:Etudiant.init(nom: "Teronal", prenom: "Kevin", niveau: "ISI5", filiere: "MCS"))
         ajoute(m:Etudiant.init(nom: "Saponi", prenom: "Pol", niveau: "ISI8", filiere: "MSI"))
-        ajoute(m:Etudiant.init(nom: "Palomer", prenom: "Astrid", niveau: "ISI2", filiere: "?"))
+        ajoute(m:Etudiant.init(nom: "Palomer", prenom: "Astrid", niveau: "ISI2", filiere: "TCBR"))
     }
     
     func getNoms() -> [String] {

@@ -76,6 +76,7 @@ class SingletonBdd{
                 table.column(self.attribut_prenom)
                 table.column(self.attribut_niveau)
                 table.column(self.attribut_filiere)
+                table.column(self.attribut_photo)
             }
             do {// Exécution du drop et du create
                 try self.database.run(dropTable)
@@ -87,9 +88,11 @@ class SingletonBdd{
         }
         print ("--> createTableEtudiant fin")
         
-        
-        let test = "test"
-        insertEtudiant(nom: test, prenom: test, niveau: test, filiere: "?", photo: "?")
+        let listEtudiants : ListeEtudiants = ListeEtudiants.init()
+        let l = listEtudiants.getEtudiants()
+        for etudiant in l {
+            insertEtudiant(nom: etudiant.nom, prenom: etudiant.prenom, niveau: etudiant.niveau, filiere: etudiant.filiere, photo: etudiant.photo)
+        }
     }
     func createTableModule() {
         print ("--> createTableModule debut")
@@ -116,8 +119,11 @@ class SingletonBdd{
         print ("--> createTableModule fin")
         
         
-        let test = "test"
-        insertModule(sigle: test, parcours: test, categorie: test, credit: 0)
+        let listModules : ListeModules = ListeModules.init()
+        let l = listModules.getModules()
+        for module in l {
+            insertModule(sigle: module.sigle, parcours: module.parcours, categorie: module.categorie, credit: module.credit)
+        }
     }
     
     func createTableEnseignant() {
@@ -144,9 +150,11 @@ class SingletonBdd{
         }
         print ("--> createTableEnseignants fin")
         
-        
-        let test = "test"
-        insertEnseignant(nom: test, prenom: test, type: test, photo: "?")
+        let listEnseignants : ListeEnseignants = ListeEnseignants.init()
+        let l = listEnseignants.getEnseignants()
+        for enseignant in l {
+            insertEnseignant(nom: enseignant.nom, prenom: enseignant.prenom, type: enseignant.type, photo: "?")
+        }
     }
     
     func getPKEnseignant() -> Int {
@@ -264,7 +272,7 @@ class SingletonBdd{
     
     func insertEtudiant(nom:String, prenom:String, niveau:String, filiere: String, photo: String) {
         print ("--> insertTableEtudiant debut")
-        let insert = self.etudiant_table.insert(self.attribut_id <- getPKEtudiant(), self.attribut_nom <- nom, self.attribut_prenom <- prenom, self.attribut_niveau <- niveau, self.attribut_filiere <- filiere, self.attribut_filiere <- photo)
+        let insert = self.etudiant_table.insert(self.attribut_id <- getPKEtudiant(), self.attribut_nom <- nom, self.attribut_prenom <- prenom, self.attribut_niveau <- niveau, self.attribut_filiere <- filiere, self.attribut_photo <- photo)
         //print(insert)
         do {try self.database.run(insert)
             print ("Insert ok")

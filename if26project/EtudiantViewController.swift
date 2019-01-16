@@ -17,6 +17,7 @@ class EtudiantViewController: UIViewController, UITextFieldDelegate, UIImagePick
     @IBOutlet weak var et_niveau: UIPickerView!
     @IBOutlet weak var et_filiere: UIPickerView!
     
+    
     @IBOutlet weak var saveButton: UIBarButtonItem!
     var etudiant: Etudiant?
     let db = SingletonBdd.shared
@@ -41,6 +42,7 @@ class EtudiantViewController: UIViewController, UITextFieldDelegate, UIImagePick
         updateSaveButtonState()
         
         if let etudiant = self.etudiant {
+            print(etudiant.nom)
             navigationItem.title = etudiant.nom
             oldName = etudiant.nom
             et_name.text   = etudiant.nom
@@ -71,13 +73,13 @@ class EtudiantViewController: UIViewController, UITextFieldDelegate, UIImagePick
             switch(etudiant.filiere) {
                 
             case "TCBR":
-                et_niveau.selectRow(0, inComponent: 0, animated: true)
+                et_filiere.selectRow(0, inComponent: 0, animated: true)
             case "MSI":
-                et_niveau.selectRow(1, inComponent: 0, animated: true)
+                et_filiere.selectRow(1, inComponent: 0, animated: true)
             case "MCS":
-                et_niveau.selectRow(2, inComponent: 0, animated: true)
+                et_filiere.selectRow(2, inComponent: 0, animated: true)
             case "MPL":
-                et_niveau.selectRow(3, inComponent: 0, animated: true)
+                et_filiere.selectRow(3, inComponent: 0, animated: true)
             default:
                 print("")
             }
@@ -101,7 +103,8 @@ class EtudiantViewController: UIViewController, UITextFieldDelegate, UIImagePick
     
     
     //MARK: Navigation
-    @IBAction func cancel(_ sender: UIBarButtonItem) {
+    
+    @IBAction func cancell(_ sender: UIBarButtonItem) {
         let isPresentingInAddMealMode = presentingViewController is UINavigationController
         if isPresentingInAddMealMode {
             dismiss(animated: true, completion: nil)
@@ -142,7 +145,6 @@ class EtudiantViewController: UIViewController, UITextFieldDelegate, UIImagePick
     //MARK: Actions comment in ViewController.swift
     
     @IBAction func selectImage(_ sender: UIButton) {
-        
         // UIImagePickerController is a view controller that lets a user pick media from their photo library.
         let imagePickerController = UIImagePickerController()
         
@@ -153,6 +155,8 @@ class EtudiantViewController: UIViewController, UITextFieldDelegate, UIImagePick
         imagePickerController.delegate = self
         present(imagePickerController, animated: true, completion: nil)
     }
+    
+    
     
     //MARK: UIImagePickerControllerDelegate
     
