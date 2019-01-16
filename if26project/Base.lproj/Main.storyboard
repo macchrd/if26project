@@ -22,7 +22,7 @@
                                 <rect key="frame" x="64" y="388" width="293" height="111"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.033294536719999997" green="0.20687957339999999" blue="0.92554813619999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Gestion du semestre en cours">
+                                <state key="normal" title="Gestion des étudiants">
                                     <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -58,7 +58,7 @@
                                 <rect key="frame" x="64" y="519" width="293" height="111"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.033294536719999997" green="0.20687957339999999" blue="0.92554813619999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Statistiques sur le département">
+                                <state key="normal" title="Statistiques">
                                     <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -66,6 +66,13 @@
                                     <segue destination="taZ-66-H4F" kind="show" id="XQm-ut-5eQ"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MANAGE'UTT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sKh-aB-BfC">
+                                <rect key="frame" x="156" y="88" width="108" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -807,6 +814,6 @@
         <segue reference="X02-nF-uYi"/>
         <segue reference="1hK-BM-pG2"/>
         <segue reference="etP-mC-ByG"/>
-        <segue reference="Hmt-X6-Cbj"/>
+        <segue reference="1Lt-Rw-vhe"/>
     </inferredMetricsTieBreakers>
 </document>
