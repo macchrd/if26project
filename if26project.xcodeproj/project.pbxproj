@@ -29,7 +29,7 @@
 		0B8415DF21EE582C002FF6C3 /* EtudiantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8415DE21EE582C002FF6C3 /* EtudiantViewController.swift */; };
 		0B8415E121EE584A002FF6C3 /* EtudiantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8415E021EE584A002FF6C3 /* EtudiantTableViewCell.swift */; };
 		0B8415E321EE5866002FF6C3 /* EtudiantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8415E221EE5866002FF6C3 /* EtudiantTableViewController.swift */; };
-		0B99CCF321EF506000DBC127 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B99CCF221EF506000DBC127 /* StatsViewController.swift */; };
+		0B99CCFF21EF54A700DBC127 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B99CCFE21EF54A700DBC127 /* StatsViewController.swift */; };
 		0BAAD36421E8CE0100039536 /* prof.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0BAAD36321E8CE0100039536 /* prof.gif */; };
 		0BAAD38521E91B0B00039536 /* SingletonBDD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAAD38421E91B0B00039536 /* SingletonBDD.swift */; };
 		2C1306B621E9DFF800EA823B /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BAAD37021E9155200039536 /* SQLite.framework */; };
@@ -153,7 +153,7 @@
 		0B8415DE21EE582C002FF6C3 /* EtudiantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtudiantViewController.swift; sourceTree = "<group>"; };
 		0B8415E021EE584A002FF6C3 /* EtudiantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtudiantTableViewCell.swift; sourceTree = "<group>"; };
 		0B8415E221EE5866002FF6C3 /* EtudiantTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtudiantTableViewController.swift; sourceTree = "<group>"; };
-		0B99CCF221EF506000DBC127 /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
+		0B99CCFE21EF54A700DBC127 /* StatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StatsViewController.swift; path = /home/etu/cachardm/Desktop/if26projectIOS/if26project/StatsViewController.swift; sourceTree = "<absolute>"; };
 		0BAAD36321E8CE0100039536 /* prof.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = prof.gif; path = ../../../Downloads/prof.gif; sourceTree = "<group>"; };
 		0BAAD36521E9155100039536 /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "../../Downloads/SQLite.swift-master/SQLite.xcodeproj"; sourceTree = "<group>"; };
 		0BAAD38421E91B0B00039536 /* SingletonBDD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingletonBDD.swift; sourceTree = "<group>"; };
@@ -211,6 +211,7 @@
 		0B40852B21E7786F00B1EC2F /* if26project */ = {
 			isa = PBXGroup;
 			children = (
+				0B99CCFE21EF54A700DBC127 /* StatsViewController.swift */,
 				0B8415DC21EE4508002FF6C3 /* ModuleViewController.swift */,
 				0B8415DE21EE582C002FF6C3 /* EtudiantViewController.swift */,
 				0B8415E021EE584A002FF6C3 /* EtudiantTableViewCell.swift */,
@@ -219,7 +220,6 @@
 				0B40852C21E7786F00B1EC2F /* AppDelegate.swift */,
 				0B40852E21E7786F00B1EC2F /* ViewController.swift */,
 				0B40853021E7786F00B1EC2F /* Main.storyboard */,
-				0B99CCF221EF506000DBC127 /* StatsViewController.swift */,
 				0B40853321E7787100B1EC2F /* Assets.xcassets */,
 				0B40853521E7787100B1EC2F /* LaunchScreen.storyboard */,
 				0B40853821E7787100B1EC2F /* Info.plist */,
@@ -477,6 +477,7 @@
 				0B8415E121EE584A002FF6C3 /* EtudiantTableViewCell.swift in Sources */,
 				0B40852F21E7786F00B1EC2F /* ViewController.swift in Sources */,
 				0B8415DF21EE582C002FF6C3 /* EtudiantViewController.swift in Sources */,
+				0B99CCFF21EF54A700DBC127 /* StatsViewController.swift in Sources */,
 				0B354FBE21EE2F1A0066BDEA /* ModuleTableViewCell.swift in Sources */,
 				0B4824EE21E8A25700B7D8BD /* EnseignantViewController.swift in Sources */,
 				0B40856B21E7865800B1EC2F /* ListeEtudiants.swift in Sources */,
@@ -486,7 +487,6 @@
 				0B40855B21E7859400B1EC2F /* Module.swift in Sources */,
 				0B4824EA21E892CA00B7D8BD /* EnseignantTableViewController.swift in Sources */,
 				0B40856721E7863700B1EC2F /* Enseignant.swift in Sources */,
-				0B99CCF321EF506000DBC127 /* StatsViewController.swift in Sources */,
 				0BAAD38521E91B0B00039536 /* SingletonBDD.swift in Sources */,
 				0B40856F21E7867A00B1EC2F /* ListeModules.swift in Sources */,
 			);

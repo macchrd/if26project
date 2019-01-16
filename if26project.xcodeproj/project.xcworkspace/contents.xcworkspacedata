@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:if26project.xcodeproj">
+      location = "group:/home/etu/cachardm/Desktop/if26projectIOS/if26project/StatsViewController.swift">
+   </FileRef>
+   <FileRef
+      location = "self:">
    </FileRef>
 </Workspace>

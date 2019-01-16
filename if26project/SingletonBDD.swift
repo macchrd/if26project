@@ -464,7 +464,56 @@ class SingletonBdd{
         return ans
     }
     
-    func countModule() {
+    func countEnseignants() -> [Int] {
+        var res :[Int] = []
+        do {
+            res.append(try self.database.scalar(enseignant_table.count))
+            
+            var filteredTable = self.enseignant_table.filter(attribut_type == "Contractuel")
+            res.append(try self.database.scalar(filteredTable.count))
+            filteredTable = self.enseignant_table.filter(attribut_type == "Maitre de conférence")
+            res.append(try self.database.scalar(filteredTable.count))
+            filteredTable = self.enseignant_table.filter(attribut_type == "Professeur")
+            res.append(try self.database.scalar(filteredTable.count))
+        }catch {
+            print (error)
+            print ("--> getIdModule failed")
+        }
+        return res
+    }
+    
+    func countModules() -> [Int] {
+    var res :[Int] = []
+    do {
+    res.append(try self.database.scalar(module_table.count))
+    
+    var filteredTable = self.module_table.filter(attribut_categorie == "CS")
+    res.append(try self.database.scalar(filteredTable.count))
+    filteredTable = self.module_table.filter(attribut_categorie == "TM")
+    res.append(try self.database.scalar(filteredTable.count))
+    }catch {
+    print (error)
+    print ("--> getIdModule failed")
+    }
+    return res
+    }
+    
+    func countEtudiants() -> [Int] {
+    var res :[Int] = []
+    do {
+    res.append(try self.database.scalar(etudiant_table.count))
+    
+    var filteredTable = self.etudiant_table.filter(attribut_filiere == "MSI")
+    res.append(try self.database.scalar(filteredTable.count))
+    filteredTable = self.etudiant_table.filter(attribut_filiere == "MCS")
+    res.append(try self.database.scalar(filteredTable.count))
+    filteredTable = self.etudiant_table.filter(attribut_filiere == "MPL")
+    res.append(try self.database.scalar(filteredTable.count))
+    }catch {
+    print (error)
+    print ("--> getIdModule failed")
+    }
+    return res
     }
     
     func selectAllEnseignants() ->  [Enseignant] {
